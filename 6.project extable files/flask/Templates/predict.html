@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Score Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: white; /* White background */
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333; /* Dark gray text color */
+            text-align: center;
+        }
+
+        #formbox {
+            background: #f9f9f9; /* Light gray background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        #formbox label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #333; /* Dark gray label text color */
+        }
+
+        #formbox input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        #bu {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2575fc;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #bu:hover {
+            background-color: #6a11cb;
+        }
+
+        #head, #prediction_text {
+            margin-bottom: 20px;
+            color: #333; /* Dark gray text color */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="head">University Score Prediction</h1>
+        <div id="formbox">
+            <form action="{{ url_for('predict') }}" method="POST" id="form">
+                <label for="qoe">Quality of Education</label>
+                <input type="number" name="qoe" id="qoe" step="0.01" required>
+                <br>
+                <label for="ae">Alumni Employment</label>
+                <input type="number" name="ae" id="ae" step="0.01" required>
+                <br>
+                <label for="qof">Quality of Faculty</label>
+                <input type="number" name="qof" id="qof" step="0.01" required>
+                <br>
+                <label for="publ">Publications</label>
+                <input type="number" name="publ" id="publ" step="0.01" required>
+                <br>
+                <label for="inf">Influence</label>
+                <input type="number" name="inf" id="inf" step="0.01" required>
+                <br>
+                <label for="cit">Citations</label>
+                <input type="number" name="cit" id="cit" step="0.01" required>
+                <br>
+                <label for="pat">Patents</label>
+                <input type="number" name="pat" id="pat" step="0.01" required>
+                <br>
+                <button id="bu" type="submit">Predict</button>
+            </form>
+        </div>
+        <h1 id="prediction_text">{{ prediction_text }}</h1>
+    </div>
+</body>
+</html>
